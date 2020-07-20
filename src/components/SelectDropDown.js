@@ -36,7 +36,9 @@ function SelectDropDown() {
 
   const [provider, setProvider] = useState(null);
   const [procedure, setProcedure] = useState(null);
-  const [providersList, setProvidersList] = useState([])
+  const [providersList, setProvidersList] = useState([]);
+  const [category, setCategory] = useState(null);
+  const [categoryList, setCategoryList] = useState([]);
   const [cost, setCost] = useState(null);
   const [proceduresList, setProceduresList] = useState([])
 
@@ -50,6 +52,7 @@ function SelectDropDown() {
   const resetApp = () => {
     setProvider(null);
     setProcedure(null);
+    setCategory(null);
     setCost(null);
   }
 
@@ -71,30 +74,46 @@ function SelectDropDown() {
     setProcedure(findProcedureById(event.target.value))
   }
 
+  const categoryChanged = (event) => {
+    setCategory(findCategoryById(event.target.value))
+  }
+
+  const findCategoryById = (id) => {
+    return categoryList.find((category) => {
+      return category.id.toString() === id
+    })
+  }
+
+
 
   const reloadProviders = useCallback(() => {
-    axios.get("http://localhost:3003/providers")
+    axios.get("http://localhost:8080/provider")
       .then((response) => {
         setProvidersList(response.data)
       })
   }, []);
 
-  const reloadProcedures = useCallback(() => {
+  const reloadCategories = useCallback(() => {
     if (!provider) return;
-    // axios.get(`http://localhost:8080/provider/${provider.id}/${procedure.id}/netWork`)
-    axios.get(`http://localhost:3003/providers/${provider.id}/procedures`)
+    axios.get(`http://localhost:8080/provider/${provider.id}/categories`) 
       .then((response) => {
-        setProceduresList(response.data)
+        console.log(response.data)
+        setCategoryList(response.data)
       })
   }, [provider]);
 
-  const reloadCost = useCallback(() => {
-    if (!provider || !procedure) return;
-    axios.get(`http://localhost:3003/providers/${provider.id}/procedures/${procedure.id}`)
+  const reloadProcedures = useCallback(() => {
+    if (!category) return;
+    axios.get(`http://localhost:8080/provider/${provider.id}/category/${category.id}/procedures`)
       .then((response) => {
-        setCost(response.data)
+        setProceduresList(response.data)
       })
-  }, [provider, procedure]);
+  }, [provider, category]);
+
+  const reloadCost = useCallback(() => {
+    if (!procedure) return;
+    setCost({ in_network_cost: procedure.inNetworkCost, out_of_network_cost: procedure.outOfNetworkCost, uninsured_cost: procedure.uninsuredCost })
+  }, [procedure]);
 
   useEffect(() => {
     reloadProviders()
@@ -102,11 +121,15 @@ function SelectDropDown() {
 
   useEffect(() => {
     reloadProcedures()
-  }, [reloadProcedures, provider]);
+  }, [reloadProcedures, category]);
 
   useEffect(() => {
     reloadCost()
   }, [reloadCost, procedure]);
+
+  useEffect(() => {
+    reloadCategories()
+  }, [reloadCategories, provider])
 
   // const classes = useStyles();
 
@@ -132,6 +155,23 @@ function SelectDropDown() {
 
         <FormHelperText>Select Your Provider</FormHelperText>
       </FormControl>
+
+      <FormControl className={classes.formControl} onChange={categoryChanged}>
+        <InputLabel htmlFor="uncontrolled-native">Category</InputLabel>
+        <NativeSelect
+          defaultValue={""}
+          inputProps={{
+            name: 'Select your Category',
+            id: 'uncontrolled-native',
+          }}>
+          <option value=""></option>
+          {categoryList.map((c) => (
+            <option key={c.id} value={c.id} {...isSelected(category, c)}>{c.name}</option>
+          ))}
+        </NativeSelect>
+        <FormHelperText>Select Your Category</FormHelperText>
+      </FormControl>
+
       <FormControl className={classes.formControl} onChange={procedureChanged}>
         <InputLabel htmlFor="uncontrolled-native">Procedure</InputLabel>
         <NativeSelect
@@ -149,10 +189,11 @@ function SelectDropDown() {
         </NativeSelect>
         <FormHelperText>Select Your Procedure</FormHelperText>
       </FormControl>
-     
+
       <p>Selected Procedure: {procedure?.name}</p>
       <p>In Network Cost: {cost?.in_network_cost}</p>
       <p>Out of Network Cost: {cost?.out_of_network_cost}</p>
+      <p>Uninsured Cost: {cost?.uninsured_cost}</p>
       <Button variant="contained" color="primary" onClick={resetApp}>Reset</Button>
 
     </div>
