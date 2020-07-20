@@ -55,7 +55,7 @@ function SelectDropDown() {
 
   const findProviderById = (id) => {
     return providersList.find((provider) => {
-      return provider.id == id
+      return provider.id.toString() === id
     })
   }
   const providerChanged = (event) => {
@@ -64,7 +64,7 @@ function SelectDropDown() {
 
   const findProcedureById = (id) => {
     return proceduresList.find((procedure) => {
-      return procedure.id == id
+      return procedure.id.toString() === id
     })
   }
   const procedureChanged = (event) => {
@@ -73,7 +73,7 @@ function SelectDropDown() {
 
 
   const reloadProviders = useCallback(() => {
-    axios.get("http://localhost:3008/providers")
+    axios.get("http://localhost:3003/providers")
       .then((response) => {
         setProvidersList(response.data)
       })
@@ -81,7 +81,8 @@ function SelectDropDown() {
 
   const reloadProcedures = useCallback(() => {
     if (!provider) return;
-    axios.get(`http://localhost:3008/providers/${provider.id}/procedures`)
+    // axios.get(`http://localhost:8080/provider/${provider.id}/${procedure.id}/netWork`)
+    axios.get(`http://localhost:3003/providers/${provider.id}/procedures`)
       .then((response) => {
         setProceduresList(response.data)
       })
@@ -89,7 +90,7 @@ function SelectDropDown() {
 
   const reloadCost = useCallback(() => {
     if (!provider || !procedure) return;
-    axios.get(`http://localhost:3008/providers/${provider.id}/procedures/${procedure.id}`)
+    axios.get(`http://localhost:3003/providers/${provider.id}/procedures/${procedure.id}`)
       .then((response) => {
         setCost(response.data)
       })
