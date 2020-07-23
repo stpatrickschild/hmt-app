@@ -87,7 +87,7 @@ function SelectDropDown() {
 
 
   const reloadProviders = useCallback(() => {
-    axios.get("http://localhost:8080/provider")
+    axios.get("http://34.66.52.51:80/provider")
       .then((response) => {
         setProvidersList(response.data)
       })
@@ -95,7 +95,7 @@ function SelectDropDown() {
 
   const reloadCategories = useCallback(() => {
     if (!provider) return;
-    axios.get(`http://localhost:8080/provider/${provider.id}/categories`)  
+    axios.get(`http://34.66.52.51:80/provider/${provider.id}/categories`)
       .then((response) => {
         console.log(response.data)
         setCategoryList(response.data)
@@ -104,7 +104,7 @@ function SelectDropDown() {
 
   const reloadSpecialtys = useCallback(() => {
     if (!category) return;
-    axios.get(`http://localhost:8080/provider/${provider.id}/categories/${category.id}/specialties`)
+    axios.get(`http://34.66.52.51:80/provider/${provider.id}/categories/${category.id}/specialties`)
       .then((response) => {
         setSpecialtysList(response.data)
       })
