@@ -14,7 +14,7 @@ import  SelectDropDown  from './SelectDropDown.js'
 export const ProvidersCost = () => (
   <div>
     <h2>See your Health Care Cose with your Insurance Provider </h2>
-    <p>What do you think your procedure's cost it? </p>
+    <p>What do you think your Specialty's cost it? </p>
     <SelectDropDown></SelectDropDown>
   </div>
 )

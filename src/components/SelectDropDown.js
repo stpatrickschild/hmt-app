@@ -35,12 +35,12 @@ function SelectDropDown() {
   };
 
   const [provider, setProvider] = useState(null);
-  const [procedure, setProcedure] = useState(null);
+  const [specialty, setSpecialty] = useState(null);
   const [providersList, setProvidersList] = useState([]);
   const [category, setCategory] = useState(null);
   const [categoryList, setCategoryList] = useState([]);
   const [cost, setCost] = useState(null);
-  const [proceduresList, setProceduresList] = useState([])
+  const [specialtysList, setSpecialtysList] = useState([])
 
   const isSelected = (a, b) => {
     if (!a) return {};
@@ -51,7 +51,7 @@ function SelectDropDown() {
 
   const resetApp = () => {
     setProvider(null);
-    setProcedure(null);
+    setSpecialty(null);
     setCategory(null);
     setCost(null);
   }
@@ -65,13 +65,13 @@ function SelectDropDown() {
     setProvider(findProviderById(event.target.value))
   }
 
-  const findProcedureById = (id) => {
-    return proceduresList.find((procedure) => {
-      return procedure.id.toString() === id
+  const findSpecialtyById = (id) => {
+    return specialtysList.find((specialty) => {
+      return specialty.id.toString() === id
     })
   }
-  const procedureChanged = (event) => {
-    setProcedure(findProcedureById(event.target.value))
+  const specialtyChanged = (event) => {
+    setSpecialty(findSpecialtyById(event.target.value))
   }
 
   const categoryChanged = (event) => {
@@ -95,37 +95,37 @@ function SelectDropDown() {
 
   const reloadCategories = useCallback(() => {
     if (!provider) return;
-    axios.get(`http://localhost:8080/provider/${provider.id}/categories`) 
+    axios.get(`http://localhost:8080/provider/${provider.id}/categories`)  
       .then((response) => {
         console.log(response.data)
         setCategoryList(response.data)
       })
   }, [provider]);
 
-  const reloadProcedures = useCallback(() => {
+  const reloadSpecialtys = useCallback(() => {
     if (!category) return;
-    axios.get(`http://localhost:8080/provider/${provider.id}/category/${category.id}/procedures`)
+    axios.get(`http://localhost:8080/provider/${provider.id}/categories/${category.id}/specialties`)
       .then((response) => {
-        setProceduresList(response.data)
+        setSpecialtysList(response.data)
       })
   }, [provider, category]);
 
   const reloadCost = useCallback(() => {
-    if (!procedure) return;
-    setCost({ in_network_cost: procedure.inNetworkCost, out_of_network_cost: procedure.outOfNetworkCost, uninsured_cost: procedure.uninsuredCost })
-  }, [procedure]);
+    if (!specialty) return;
+    setCost({ in_network_cost: specialty.inNetworkCost, out_of_network_cost: specialty.outOfNetworkCost, uninsured_cost: specialty.uninsuredCost })
+  }, [specialty]);
 
   useEffect(() => {
     reloadProviders()
   }, [reloadProviders]);
 
   useEffect(() => {
-    reloadProcedures()
-  }, [reloadProcedures, category]);
+    reloadSpecialtys()
+  }, [reloadSpecialtys, category]);
 
   useEffect(() => {
     reloadCost()
-  }, [reloadCost, procedure]);
+  }, [reloadCost, specialty]);
 
   useEffect(() => {
     reloadCategories()
@@ -172,25 +172,25 @@ function SelectDropDown() {
         <FormHelperText>Select Your Category</FormHelperText>
       </FormControl>
 
-      <FormControl className={classes.formControl} onChange={procedureChanged}>
-        <InputLabel htmlFor="uncontrolled-native">Procedure</InputLabel>
+      <FormControl className={classes.formControl} onChange={specialtyChanged}>
+        <InputLabel htmlFor="uncontrolled-native">Specialty</InputLabel>
         <NativeSelect
           defaultValue={""}
           inputProps={{
-            name: 'Select your Procedure',
+            name: 'Select your Specialty',
             id: 'uncontrolled-native',
           }}
 
         >
           <option value=""></option>
-          {proceduresList.map((p) => (
-            <option key={p.id} value={p.id} {...isSelected(procedure, p)}>{p.name}</option>
+          {specialtysList.map((p) => (
+            <option key={p.id} value={p.id} {...isSelected(specialty, p)}>{p.name}</option>
           ))}
         </NativeSelect>
-        <FormHelperText>Select Your Procedure</FormHelperText>
+        <FormHelperText>Select Your Specialty</FormHelperText>
       </FormControl>
 
-      <p>Selected Procedure: {procedure?.name}</p>
+      <p>Selected Specialty: {specialty?.name}</p>
       <p>In Network Cost: {cost?.in_network_cost}</p>
       <p>Out of Network Cost: {cost?.out_of_network_cost}</p>
       <p>Uninsured Cost: {cost?.uninsured_cost}</p>
