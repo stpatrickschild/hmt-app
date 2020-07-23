@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { About } from './components/About';
-import { InsuranceFinder } from './components/Insurancefinder';
-import { ProvidersCost } from './components/ProvidersCost';
-import { Resources } from './components/Resources';
-import { MedicalPriceTransparency } from './components/MedicalPriceTransparency';
+import { AboutUs } from './components/AboutUs';
+import { ForPatients } from './components/ForPatients';
+import { ForInsurersAndProviders } from './components/ForInsurersAndProviders';
+import SelectDropDown from './components/SelectDropDown';
+import { ForPolicyMakers } from './components/ForPolicyMakers';
+import { HOME } from './components/HOME';
 import { NoMatch } from './components/NoMatch';
 import { Layout } from './components/Layout';
 import NavigationBar from './components/NavigationBar';
@@ -20,12 +21,15 @@ class App extends Component {
         <Layout>
           <Router>
             <Switch>
-              <Route exact path="/" component={MedicalPriceTransparency} />
-              <Route path="/about" component={About} />
-              <Route path="/providerscost" component={ProvidersCost} />
-              <Route path="/insurancefinder" component={InsuranceFinder} />
-              <Route path="/resources" component={Resources} />
+              <Route exact path="/" component={SelectDropDown} />
+              <Route exact path="/ForInsurersAndProviders" component={ForInsurersAndProviders} />
+              <Route path="/AboutUs" component={AboutUs} />
+              <Route path="/HOME" component={HOME} />
+              <Route path="/ForPatients" component={ForPatients} />
+              <Route path="/ForPolicyMakers" component={ForPolicyMakers} />
+
               <Route component={NoMatch} />
+
             </Switch>
           </Router>
         </Layout>

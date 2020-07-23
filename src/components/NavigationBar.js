@@ -25,11 +25,11 @@ const NavigationBar = () => (
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Item><Nav.Link href="/">MedicalPriceTransparancy</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/providerscost">ProvidersCost</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/insurancefinder">InsuranceFinder</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/resources">Resources</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/AboutUs">About Us</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/ForPatients">For Patients</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/ForInsurersAndProviders">For Insurers & Providers</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/ForPolicyMakers">For Policy Makers</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

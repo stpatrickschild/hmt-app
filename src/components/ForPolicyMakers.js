@@ -1,15 +1,8 @@
 import React from 'react';
 
-//  //Function Component
-//  function ResourcesComponent ()  {
-//   return (
-//     <div className="ResourcesComponent">
-//       Resources Component
-//     </div>
-//   );
-// };
 
-export const Resources = () => (
+
+export const ForPolicyMakers = () => (
   <div>
     <h2>Apply for or renew coverage | Washington State Health Care   </h2>
     <a href="https://www.hca.wa.gov/health-care-services-supports/apple-health-medicaid-coverage/apply-or-renew-coverage">Apply here</a>
@@ -19,4 +12,4 @@ export const Resources = () => (
 
   </div>
 )
-export default Resources;
+export default ForPolicyMakers;

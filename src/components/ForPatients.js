@@ -1,15 +1,8 @@
 import React from 'react';
 
 
-// //Function Component
-// function InsuranceFinderComponent ()  {
-//   return (
-//     <div className="InsuranceFinderComponent">
-//       Insurance Finder Component
-//     </div>
-//   );
-// };
-export const InsuranceFinder = () => (
+
+export const ForPatients = () => (
   <div>
     <h2>Finder your Health Insurance Provider</h2>
     
@@ -18,4 +11,4 @@ export const InsuranceFinder = () => (
   </div>
 )
 
-export default InsuranceFinder;
+export default ForPatients;
