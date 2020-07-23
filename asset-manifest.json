@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/hmt-app/static/css/main.1ed9e829.chunk.css",
+    "main.js": "/hmt-app/static/js/main.868a4ad2.chunk.js",
+    "main.js.map": "/hmt-app/static/js/main.868a4ad2.chunk.js.map",
+    "runtime-main.js": "/hmt-app/static/js/runtime-main.7fdfd0e1.js",
+    "runtime-main.js.map": "/hmt-app/static/js/runtime-main.7fdfd0e1.js.map",
+    "static/js/2.4d3d6b0f.chunk.js": "/hmt-app/static/js/2.4d3d6b0f.chunk.js",
+    "static/js/2.4d3d6b0f.chunk.js.map": "/hmt-app/static/js/2.4d3d6b0f.chunk.js.map",
+    "index.html": "/hmt-app/index.html",
+    "precache-manifest.443a6126fb17872a5dc32c92d7f181a2.js": "/hmt-app/precache-manifest.443a6126fb17872a5dc32c92d7f181a2.js",
+    "service-worker.js": "/hmt-app/service-worker.js",
+    "static/css/main.1ed9e829.chunk.css.map": "/hmt-app/static/css/main.1ed9e829.chunk.css.map",
+    "static/js/2.4d3d6b0f.chunk.js.LICENSE.txt": "/hmt-app/static/js/2.4d3d6b0f.chunk.js.LICENSE.txt",
+    "static/media/happypplImage.jpg": "/hmt-app/static/media/happypplImage.10535061.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7fdfd0e1.js",
+    "static/js/2.4d3d6b0f.chunk.js",
+    "static/css/main.1ed9e829.chunk.css",
+    "static/js/main.868a4ad2.chunk.js"
+  ]
+}
