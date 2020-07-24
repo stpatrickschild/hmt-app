@@ -191,9 +191,9 @@ function SelectDropDown() {
       </FormControl>
 
       <p>Selected Specialty: {specialty?.name}</p>
-      <p>In Network Cost: {cost?.in_network_cost}</p>
-      <p>Out of Network Cost: {cost?.out_of_network_cost}</p>
-      <p>Uninsured Cost: {cost?.uninsured_cost}</p>
+      <p>In Network Cost: $ {cost?.in_network_cost}</p>
+      <p>Out of Network Cost: $ {cost?.out_of_network_cost}</p>
+      <p>Uninsured Cost: ~ $ {cost?.uninsured_cost}</p>
       <Button variant="contained" color="primary" onClick={resetApp}>Reset</Button>
 
     </div>
