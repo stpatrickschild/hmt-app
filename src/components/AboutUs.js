@@ -7,7 +7,7 @@ import React from 'react';
 
 export const AboutUs = () => (
   <div>
-    <h2>From Hannah </h2>
+    <h2>Mission </h2>
     <p>Hi, I’m Hannah, the creator of this Medical Pricing Transparency website. Have you ever had to go to the doctor or an emergency room and after you get whatever treatment, you start anxiously waiting for the bills to start arriving? Or anxiously praying for the bills to stop arriving? Well, I have. A long time ago, I had a medical procedure that, at the time was fully covered by my health insurance. But two years after my treatment the bills haven’t stopped arriving. Not only were they coming to me, but they also had been sent to a collection agency without me even know that I have an unpaid balance. After that experience, I always try to research and learn about how much any medical treatment costs before I even go to the doctor – mostly I end up frustrated and no more informed than when I start searching. And when I asked my doctors, often, I get none satisfying answer or a “please contact our billing department”.  </p>
 
     <p>Recently, while listening to NPR, I discovered that they have a monthly special program called “Bill of the Month”. In this program, NPR in collaboration with Kaiser Health, ask listeners to send them their experience with health care costs and billing practices and they feature what they think is the most outrageous incidents. And that program, my own aforementioned experience, and experiences of friends and family members, compelled me to do my part to find a solution to the lack of pricing transparency in our healthcare system. </p>
